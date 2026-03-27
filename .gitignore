@@ -34,12 +34,11 @@ scripts/teradata_tpt/logs/
 scripts/teradata_tpt/tpt.local.config.ps1
 scripts/teradata_tpt/twbcfg_local.ini
 
-# DVC cache and local state
-.dvc/cache/
-.dvc/tmp/
-.dvc/config.local
 
 # Data and generated artifacts tracked outside Git
-data_synth/raw/
 data_synth/reports/
 qdrant_storage/
+data_synth/raw/usage_events.csv
+
+
+.dvc/
