@@ -1,0 +1,5 @@
+[core]
+    remote = teamdrive
+['remote "teamdrive"']
+    url = gdrive://1v7uHarWZMAcHIffO_WxefqyHQP4NJNxX
+    gdrive_acknowledge_abuse = true
