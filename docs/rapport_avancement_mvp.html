@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Rapport d'avancement MVP</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif; margin:38px; line-height:1.45; color:#111}
+h1{font-size:24px;margin:0 0 8px}
+h2{font-size:18px;margin:22px 0 8px}
+p,li{font-size:12px}
+ul{margin-top:6px}
+.small{color:#444;font-size:11px}
+</style>
+</head>
+<body>
+<h1>Rapport d'avancement - Chatbot SQL Teradata (MVP)</h1>
+<p class="small">Date: 10 mars 2026</p>
+
+<h2>1. Contexte et objectif</h2>
+<p>Le projet vise la realisation d'un chatbot backend capable de generer, documenter et optimiser des requetes SQL orientees Teradata. En raison de l'absence initiale d'acces a un environnement Teradata reel, une approche simulation/mock a ete retenue pour livrer un MVP fonctionnel, testable et evolutif.</p>
+
+<h2>2. Realisations techniques</h2>
+<ul>
+<li>API FastAPI operationnelle avec les routes: <code>/health</code>, <code>/version</code>, <code>/generate-sql</code>, <code>/document-sql</code>, <code>/optimize-sql</code>.</li>
+<li>Contrat de reponse standard sur toutes les routes: <code>request_id</code>, <code>status</code>, <code>data</code>, <code>warnings</code>, <code>errors</code>.</li>
+<li>Authentification simple par API key via l'en-tete <code>x-api-key</code>.</li>
+<li>Middleware d'observabilite avec correlation id et mesure de latence (<code>X-Request-ID</code>, <code>X-Process-Time-Ms</code>).</li>
+</ul>
+
+<h2>3. Securite SQL et logique metier</h2>
+<ul>
+<li>Validation SQL en lecture seule: seules les requetes <code>SELECT</code> et <code>WITH ... SELECT</code> sont autorisees.</li>
+<li>Blocage des mots-cles dangereux: <code>DROP</code>, <code>DELETE</code>, <code>UPDATE</code>, <code>INSERT</code>, <code>MERGE</code>, <code>ALTER</code>, etc.</li>
+<li>Blocage des requetes multi-statements.</li>
+<li>Warning automatique sur l'utilisation de <code>SELECT *</code>.</li>
+<li>Service de generation SQL (mock LLM) retournant SQL + explication + score de confiance.</li>
+<li>Service de documentation SQL: extraction tables/colonnes et logique des clauses.</li>
+<li>Service d'optimisation SQL: heuristiques initiales et recommandations.</li>
+</ul>
+
+<h2>4. Tests et validation</h2>
+<ul>
+<li>Fichier de tests automatise <code>tests/test_api.py</code> avec 10 tests.</li>
+<li>Couverture: disponibilite API, succes endpoints, auth, blocage SQL dangereux, blocage multi-statements, format de reponse, headers de tracabilite, non-regression sur 10 prompts de reference.</li>
+<li>Resultat obtenu: <strong>10 passed</strong>.</li>
+<li>Validation manuelle Postman realisee sur 5 scenarios (generation, documentation, optimisation, erreur auth 401, erreur securite SQL 400).</li>
+</ul>
+
+<h2>5. Livrables produits</h2>
+<ul>
+<li>Documents projet: charte, backlog, architecture, runbook demo, guide Postman, next steps.</li>
+<li>Prompts: <code>generate_sql_v1.md</code> et <code>generate_sql_v2.md</code>.</li>
+<li>Artefacts demo: collection et environnement Postman.</li>
+</ul>
+
+<h2>6. Incidents rencontres et resolution</h2>
+<ul>
+<li>Erreur d'encodage Unicode corrigee dans les fichiers Python concernes.</li>
+<li>Dependance de test manquante (<code>httpx</code>) installee pour le TestClient.</li>
+<li>Verification finale confirmee par execution des tests en local.</li>
+</ul>
+
+<h2>7. Pourquoi cette approche</h2>
+<p>La strategie suivie est incrementalement orientee reduction de risque: d'abord un socle API stable, ensuite la securite SQL, puis la validation par tests et scenarios Postman, enfin la preparation de l'integration Teradata reelle. Cette demarche garantit un MVP demonstrable rapidement sans compromettre la qualite technique.</p>
+
+<h2>8. Etat actuel et prochaine phase</h2>
+<p>Le MVP est operationnel, teste et pret pour la phase 2. Les prochaines actions sont: connexion Teradata reelle (teradatasql/ODBC), branchement d'un vrai provider LLM, ajout d'une evaluation de plans d'execution (EXPLAIN) si disponible, et extension des tests d'integration/performance.</p>
+
+</body>
+</html>

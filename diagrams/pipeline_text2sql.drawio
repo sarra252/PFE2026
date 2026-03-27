@@ -1,0 +1,133 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36" version="29.6.1">
+  <diagram id="pipeline-text2sql" name="Pipeline Text2SQL">
+    <mxGraphModel dx="1572" dy="902" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ui" parent="1" style="swimlane;rounded=1;whiteSpace=wrap;html=1;fillColor=#F5FAFF;strokeColor=#2B6CB0;fontStyle=1;startSize=28;" value="UI Layer" vertex="1">
+          <mxGeometry height="140" width="360" x="680" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="u" parent="ui" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#2B6CB0;strokeWidth=2;rounded=1;" value="User Question" vertex="1">
+          <mxGeometry height="50" width="120" x="30" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ur" parent="ui" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#2B6CB0;strokeWidth=2;rounded=1;" value="Generated Response" vertex="1">
+          <mxGeometry height="60" width="140" x="190" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="rag" parent="1" style="swimlane;rounded=1;whiteSpace=wrap;html=1;fillColor=#F7FFF9;strokeColor=#9AE6B4;fontStyle=1;startSize=28;" value="RAG Layer" vertex="1">
+          <mxGeometry height="200" width="230" x="250" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="s" parent="rag" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDFDF3;strokeColor=#2F855A;strokeWidth=2;" value="Schema Context&lt;br/&gt;and Metadata" vertex="1">
+          <mxGeometry height="50" width="150" x="35" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="p" parent="rag" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDFDF3;strokeColor=#2F855A;strokeWidth=2;arcSize=10;" value="Prompt&lt;br/&gt;Construction" vertex="1">
+          <mxGeometry height="45" width="150" x="35" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="lqJGoYc7fMkLWULZurme-10" edge="1" parent="1" source="llm" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;edgeStyle=orthogonalEdgeStyle;" target="val">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="455" y="750" as="sourcePoint" />
+            <mxPoint x="740" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lqJGoYc7fMkLWULZurme-14" edge="1" parent="1" source="llm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="resp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="365" y="860" />
+              <mxPoint x="1570" y="860" />
+            </Array>
+            <mxPoint x="1370" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="llm" parent="1" style="swimlane;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFCF5;strokeColor=#F6AD55;fontStyle=1;startSize=28;" value="LLM Layer" vertex="1">
+          <mxGeometry height="110" width="180" x="275" y="705" as="geometry" />
+        </mxCell>
+        <mxCell id="l" parent="llm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7E6;strokeColor=#C05621;strokeWidth=2;" value="SQL&lt;br/&gt;Generation" vertex="1">
+          <mxGeometry height="45" width="130" x="25" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lqJGoYc7fMkLWULZurme-18" edge="1" parent="1" source="post" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="resp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="260" />
+              <mxPoint x="1397" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="post" parent="1" style="swimlane;rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#D6BCFA;fontStyle=1;startSize=28;" value="Post-Processing Layer" vertex="1">
+          <mxGeometry height="130" width="280" x="925" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="o" parent="post" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F0FF;strokeColor=#805AD5;strokeWidth=2;" value="SQL&lt;br/&gt;Optimization" vertex="1">
+          <mxGeometry height="45" width="100" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="t" parent="post" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F0FF;strokeColor=#805AD5;strokeWidth=2;" value="SQL&lt;br/&gt;Documentation" vertex="1">
+          <mxGeometry height="45" width="110" x="150" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lqJGoYc7fMkLWULZurme-19" edge="1" parent="1" source="db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="resp">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="swimlane;rounded=1;whiteSpace=wrap;html=1;fillColor=#F7FAFC;strokeColor=#A0AEC0;fontStyle=1;startSize=28;" value="Database Layer" vertex="1">
+          <mxGeometry height="290" width="250" x="940" y="525" as="geometry" />
+        </mxCell>
+        <mxCell id="d" parent="db" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#F2F5F9;strokeColor=#4A5568;strokeWidth=2;rounded=1;" value="Teradata DB" vertex="1">
+          <mxGeometry height="70" width="100" x="75" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="r" parent="db" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F5F9;strokeColor=#4A5568;strokeWidth=2;" value="Query&lt;br/&gt;Results" vertex="1">
+          <mxGeometry height="40" width="110" x="70" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e" parent="db" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F5F9;strokeColor=#4A5568;strokeWidth=2;" value="Teradata Query&lt;br/&gt;Execution" vertex="1">
+          <mxGeometry height="45" width="160" x="45" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="db" source="e" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4A5568;strokeWidth=1.5;" target="d">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lqJGoYc7fMkLWULZurme-20" edge="1" parent="1" source="resp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="ur">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="resp" parent="1" style="swimlane;rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDFA;strokeColor=#81E6D9;fontStyle=1;startSize=28;" value="Response Layer" vertex="1">
+          <mxGeometry height="120" width="270" x="1330" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="a" parent="resp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFFB;strokeColor=#0F766E;strokeWidth=2;" value="Natural Language&lt;br/&gt;Response Generation" vertex="1">
+          <mxGeometry height="45" width="180" x="45" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="d" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4A5568;strokeWidth=1.5;" target="r">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lqJGoYc7fMkLWULZurme-11" edge="1" parent="1" source="val" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="post">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="530" />
+              <mxPoint x="830" y="395" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lqJGoYc7fMkLWULZurme-12" edge="1" parent="1" source="val" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="530" />
+              <mxPoint x="830" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="val" parent="1" style="swimlane;rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF5F5;strokeColor=#FC8181;fontStyle=1;startSize=28;" value="Validation Layer" vertex="1">
+          <mxGeometry height="140" width="240" x="530" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="v" parent="val" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF1F2;strokeColor=#C53030;strokeWidth=2;" value="SQL Validation&lt;br/&gt;&amp; Safety Checks" vertex="1">
+          <mxGeometry height="50" width="160" x="40" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="lqJGoYc7fMkLWULZurme-8" edge="1" parent="1" source="u" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="rag">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lqJGoYc7fMkLWULZurme-9" edge="1" parent="1" source="rag" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="llm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="365" y="570" />
+            </Array>
+            <mxPoint x="370" y="470" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

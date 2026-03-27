@@ -1,0 +1,7 @@
+@{
+  TdpId = "pfe-2026-xxxxxxxx.env.clearscape.teradata.com"
+  UserName = "demo_user"
+  UserPassword = "votre_mot_de_passe"
+  TargetDatabase = "demo_user"
+  SourceDir = "E:\PFE2026\data_synth\raw"
+}

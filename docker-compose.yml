@@ -1,0 +1,50 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pfe2026-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app/backend
+      - ./data_synth:/app/data_synth
+      - ./docs:/app/docs
+      - ./prompts:/app/prompts
+      - ./tests:/app/tests
+    command: uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pfe2026-streamlit
+    depends_on:
+      - api
+    env_file:
+      - .env
+    environment:
+      STREAMLIT_SERVER_HEADLESS: "true"
+      STREAMLIT_API_BASE_URL: "http://api:8000"
+      STREAMLIT_API_KEY: "${API_KEY:-changeme}"
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./frontend:/app/frontend
+    command: streamlit run frontend/app_streamlit.py --server.address 0.0.0.0 --server.port 8501
+
+  qdrant:
+    image: qdrant/qdrant:v1.13.4
+    container_name: pfe2026-qdrant
+    profiles:
+      - rag-vector
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+volumes:
+  qdrant_storage:

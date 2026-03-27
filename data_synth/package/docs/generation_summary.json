@@ -1,0 +1,33 @@
+{
+  "config": {
+    "seed": 42,
+    "output_root": "data_synth",
+    "start_date": "2024-01-01",
+    "end_date": "2025-12-31",
+    "customers": 12000,
+    "max_subscribers": 6,
+    "events_per_subscriber_per_month": 22,
+    "max_usage_events": 5000000,
+    "orphan_subscriber_rate": 0.08,
+    "orphan_usage_rate": 0.06,
+    "null_rate": 0.04,
+    "duplicate_msisdn_rate": 0.015,
+    "id_noise_rate": 0.03,
+    "outlier_usage_rate": 0.002,
+    "parquet": false
+  },
+  "row_counts": {
+    "plans": 4,
+    "customers": 12000,
+    "subscribers": 28177,
+    "usage_events": 5000000,
+    "invoices": 154796,
+    "payments": 106125
+  },
+  "parquet_notes": [],
+  "paths": {
+    "raw": "E:\\PFE2026\\scripts\\teradata_tpt\\data_synth\\raw",
+    "metadata": "E:\\PFE2026\\scripts\\teradata_tpt\\data_synth\\metadata",
+    "reports": "E:\\PFE2026\\scripts\\teradata_tpt\\data_synth\\reports"
+  }
+}

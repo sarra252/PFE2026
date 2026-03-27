@@ -1,0 +1,15 @@
+.git
+.gitignore
+.venv
+.pytest_cache
+.vscode
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.env
+pfe key.txt
+scripts/teradata_tpt/logs
+qdrant_storage
+data_synth/raw
+data_synth/reports

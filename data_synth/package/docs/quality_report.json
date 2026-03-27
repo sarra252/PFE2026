@@ -1,0 +1,50 @@
+{
+  "row_counts": {
+    "plans": 4,
+    "customers": 12000,
+    "subscribers": 28177,
+    "usage_events": 5000000,
+    "invoices": 154796,
+    "payments": 106125
+  },
+  "null_ratios": {
+    "customers.contact_email": 0.03992,
+    "customers.contact_phone": 0.03942,
+    "subscribers.imsi": 0.02012,
+    "usage_events.cell_id": 0.0002
+  },
+  "duplicate_ratios": {
+    "subscribers.msisdn": 0.01494
+  },
+  "orphan_ratios": {
+    "subscribers.client_id_vs_customers.customer_id": 0.08904,
+    "usage_events.subscriber_id_vs_subscribers.subscriber_id": 0.06,
+    "payments.invoice_id_vs_invoices.invoice_id": 0.002
+  },
+  "numeric_profiles": {
+    "usage_events.data_mb": {
+      "mean": 159.6647,
+      "median": 60.618,
+      "p95": 493.188,
+      "max": 868374.223
+    },
+    "usage_events.voice_min": {
+      "mean": 4.181,
+      "median": 3.57,
+      "p95": 9.63,
+      "max": 37.98
+    },
+    "invoices.amount": {
+      "mean": 61.9018,
+      "median": 40.97,
+      "p95": 180.18,
+      "max": 663.96
+    },
+    "payments.paid_amount": {
+      "mean": 61.1566,
+      "median": 40.84,
+      "p95": 180.44,
+      "max": 663.96
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "customer_identifiers": [
+    "customer_id",
+    "client_id",
+    "cust_id",
+    "customer_ref"
+  ],
+  "subscriber_identifiers": [
+    "subscriber_id",
+    "subscriber_id_alt",
+    "subscriber_key",
+    "msisdn",
+    "imsi"
+  ],
+  "billing_time": [
+    "billing_month",
+    "issued_at",
+    "due_date",
+    "paid_at"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "customer_identifiers": [
+    "customer_id",
+    "client_id",
+    "cust_id",
+    "customer_ref"
+  ],
+  "subscriber_identifiers": [
+    "subscriber_id",
+    "msisdn",
+    "imsi"
+  ],
+  "billing_time": [
+    "billing_month",
+    "issued_at",
+    "due_date",
+    "paid_at"
+  ],
+  "subscription_terms": [
+    "abonnement",
+    "abonnements",
+    "forfait",
+    "forfaits",
+    "plan",
+    "plan_id",
+    "plan_name"
+  ],
+  "popularity_terms": [
+    "populaire",
+    "populaires",
+    "top",
+    "frequent",
+    "frequence",
+    "count"
+  ]
+}

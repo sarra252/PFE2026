@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Local environment and secrets
+.env
+!.env.example
+*.pem
+*.key
+*secret*
+pfe key.txt
+
+# Editors and OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Logs and runtime artifacts
+*.log
+logs/
+scripts/teradata_tpt/logs/
+
+# Local Teradata and machine-specific config
+scripts/teradata_tpt/tpt.local.config.ps1
+scripts/teradata_tpt/twbcfg_local.ini
+
+# DVC cache and local state
+.dvc/cache/
+.dvc/tmp/
+.dvc/config.local
+
+# Data and generated artifacts tracked outside Git
+data_synth/raw/
+data_synth/reports/
+qdrant_storage/

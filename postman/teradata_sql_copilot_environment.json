@@ -1,0 +1,15 @@
+{
+  "name": "Teradata SQL Copilot Env",
+  "values": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "enabled": true
+    },
+    {
+      "key": "api_key",
+      "value": "changeme",
+      "enabled": true
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+USING CHARACTER SET UTF8
+
+DEFINE JOB load_invoices
+DESCRIPTION 'Load invoices.csv into stg_invoices'
+(
+  DEFINE SCHEMA src_invoices
+  (
+    invoice_id       VARCHAR(20),
+    customer_id      VARCHAR(20),
+    billing_month    VARCHAR(7),
+    issued_at        VARCHAR(10),
+    due_date         VARCHAR(10),
+    amount           VARCHAR(30),
+    currency         VARCHAR(3),
+    invoice_status   VARCHAR(20),
+    tax_rate         VARCHAR(20),
+    amount_with_tax  VARCHAR(30)
+  );
+
+  DEFINE OPERATOR csv_reader
+  TYPE DATACONNECTOR PRODUCER
+  SCHEMA src_invoices
+  ATTRIBUTES
+  (
+    VARCHAR FileName      = @SourceFile,
+    VARCHAR OpenMode      = 'Read',
+    VARCHAR Format        = 'Delimited',
+    VARCHAR TextDelimiter = ',',
+    VARCHAR QuotedData    = 'Optional',
+    INTEGER SkipRows      = 1
+  );
+
+  DEFINE OPERATOR td_load
+  TYPE LOAD
+  SCHEMA *
+  ATTRIBUTES
+  (
+    VARCHAR TdpId          = @TdpId,
+    VARCHAR UserName       = @UserName,
+    VARCHAR UserPassword   = @UserPassword,
+    VARCHAR TargetDatabase = @TargetDatabase,
+    VARCHAR TargetTable    = 'stg_invoices',
+    VARCHAR LogTable       = 'stg_invoices_log',
+    VARCHAR ErrorTable1    = 'stg_invoices_e1',
+    VARCHAR ErrorTable2    = 'stg_invoices_e2',
+    INTEGER MaxSessions    = 8,
+    INTEGER MinSessions    = 1,
+    VARCHAR DateForm       = 'ANSIDATE'
+  );
+
+  APPLY
+  (
+    'INSERT INTO stg_invoices (
+      invoice_id, customer_id, billing_month, issued_at, due_date,
+      amount, currency, invoice_status, tax_rate, amount_with_tax
+    ) VALUES (
+      :invoice_id, :customer_id, :billing_month, :issued_at, :due_date,
+      :amount, :currency, :invoice_status,
+      :tax_rate, :amount_with_tax
+    );'
+  )
+  TO OPERATOR (td_load)
+  SELECT * FROM OPERATOR (csv_reader);
+);
+
+

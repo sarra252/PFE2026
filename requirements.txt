@@ -1,0 +1,14 @@
+﻿fastapi==0.116.1
+uvicorn==0.35.0
+pydantic==2.11.7
+pydantic-settings==2.10.1
+sqlparse==0.5.3
+pytest==8.4.1
+httpx==0.28.1
+openai>=1.40,<2
+pandas>=2.2,<3
+openpyxl>=3.1,<4
+pyarrow>=15,<21
+duckdb>=1.1,<2
+teradatasql>=20,<21
+streamlit>=1.38,<2

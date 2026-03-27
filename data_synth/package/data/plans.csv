@@ -1,0 +1,5 @@
+plan_id,plan_name,plan_family,monthly_fee,data_quota_gb,voice_quota_min,sms_quota,currency
+P_BASIC_10,Basic 10GB,B2C,9.99,10,120,100,EUR
+P_PLUS_40,Plus 40GB,B2C,19.99,40,300,300,EUR
+P_PREMIUM_120,Premium 120GB,B2C,39.99,120,1200,1000,EUR
+P_BIZ_200,Business 200GB,B2B,89,200,2000,5000,EUR

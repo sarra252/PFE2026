@@ -1,0 +1,12 @@
+[
+  {"id": 1, "question": "Top 10 clients par chiffre d'affaires", "expect_contains": ["QUALIFY", "ROW_NUMBER", "SUM"]},
+  {"id": 2, "question": "CA par mois", "expect_contains": ["EXTRACT", "GROUP BY"]},
+  {"id": 3, "question": "Lister commandes avec infos client", "expect_contains": ["JOIN"]},
+  {"id": 4, "question": "Nombre de commandes par statut", "expect_contains": ["COUNT", "GROUP BY"]},
+  {"id": 5, "question": "Top 5 produits vendus", "expect_contains": ["GROUP BY"]},
+  {"id": 6, "question": "Clients inactifs depuis 90 jours", "expect_contains": ["WHERE"]},
+  {"id": 7, "question": "Montant moyen par region", "expect_contains": ["AVG", "GROUP BY"]},
+  {"id": 8, "question": "Commandes du dernier trimestre", "expect_contains": ["WHERE"]},
+  {"id": 9, "question": "Detection doublons email", "expect_contains": ["GROUP BY", "HAVING"]},
+  {"id": 10, "question": "Top 3 commandes par client", "expect_contains": ["ROW_NUMBER", "QUALIFY"]}
+]
