@@ -24,12 +24,13 @@ class Settings(BaseSettings):
     teradata_password: str = ""
     teradata_database: str = ""
 
-    rag_backend: str = "local"
+    rag_backend: str = "vector"
     qdrant_url: str = "http://localhost:6333"
     qdrant_api_key: str = ""
     qdrant_collection: str = "teradata_metadata"
-    embedding_model: str = "BAAI/bge-m3"
+    embedding_model: str = "intfloat/multilingual-e5-base"
     rag_top_k: int = 4
+
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
 settings = Settings()
